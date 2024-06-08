@@ -141,7 +141,11 @@ if [ -e $path ]; then
 	echo "Saving your new configuration \033[1;31m(this is irreversible)\033[0m..."
 	sleep 2
 	echo "$new_file" > $path
-	echo "\n\n\033[0;32mYour configuration has been successfully to fit your screen! Please restart your emulator to apply these changes.\033[0m"
+	printf "\n\n\033[1;32mYour configuration has been successfully set to fit your screen!\nPress enter if you'd like to start your emulator.\033[0m"
+	read restartQ
+	
+	cd ~/Library/Android/sdk/emulator
+	./emulator -avd $option
 else
     echo "\033[1;31mAn error occurred when accessing the configuration file for this emulator!\nPlease ensure this emulator folder exists.\n\033[0;32m"
 fi
